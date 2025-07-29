@@ -5,6 +5,7 @@ import time
 bookshelf = utils.load_books('books_small.csv')
 bookshelf_v1 = bookshelf
 bookshelf_v2 = bookshelf
+bookshelf_v3 = bookshelf
 
 long_bookshelf = utils.load_books('books_large.csv')
 
@@ -16,6 +17,11 @@ def by_title_ascending(a, b):
 
 def by_author_ascending(a, b):
   if(a['author_lower'][0] > b['author_lower'][0]):
+    return True
+  return False
+
+def by_author_descending(a, b):
+  if(a['author_lower'][0] < b['author_lower'][0]):
     return True
   return False
 
@@ -33,13 +39,14 @@ def by_total_length(a, b):
 
 sort_1 = sorts.bubble_sort(bookshelf, by_title_ascending)
 sort_2 = sorts.bubble_sort(bookshelf_v1, by_author_ascending)
+sort_3 = sorts.bubble_sort(bookshelf_v3, by_author_descending)
 qk_sort_1 = sorts.quicksort(bookshelf_v2, 0, len(bookshelf_v2) - 1, by_author_ascending)
 
 sort_long_1 = sorts.bubble_sort(long_bookshelf, by_total_length)
 qk_sort_long_1 = sorts.quicksort(long_bookshelf, 0, len(long_bookshelf) - 1, by_total_length)
 
 # Print authors/title to verify sorting in each sort
-# for book in bookshelf_v2:
+# for book in bookshelf_v3:
 #   print(book['author_lower'])
 
 
